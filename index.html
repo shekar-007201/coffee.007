@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="" />
+</head>
+
+<body>
+    <div class="login-container">
+        <form class="login-form" action="#" method="post">
+            <h1>Login</h1>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required />
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <div class="options">
+                <label><input type="checkbox" name="remember" /> Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit">Login</button>
+            <div class="register">
+                <p>Don't have an account? <a href="#">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("new butterfly.jpg");
+            background-position: flex-end;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .login-container {
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(9, 2, 2, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .login-form h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #120101;
+        }
+        
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #060000;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #369a31;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .options a {
+            color: #f6f8f0;
+            text-decoration: none;
+        }
+        
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #06aa17;
+        }
+        
+        .register {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #972a2a;
+        }
+        
+        .register a {
+            color: #e9eae5;
+            text-decoration: none;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginForm = document.querySelector(".login-form");
+
+            loginForm.addEventListener("submit", (event) => {
+                event.preventDefault(); // Prevent the form from submitting the traditional way
+
+                const username = document.getElementById("username").value.trim();
+                const password = document.getElementById("password").value.trim();
+
+                // Clear previous error messages
+                clearErrors();
+
+                let hasError = false;
+
+                if (username === "") {
+                    showError("username", "Username is required.");
+                    hasError = true;
+                }
+
+                if (password === "") {
+                    showError("password", "Password is required.");
+                    hasError = true;
+                } else if (password.length < 8) {
+                    showError(
+                        "password",
+                        "Password must be at least 8 characters long."
+                    );
+                    hasError = true;
+                }
+
+                if (!hasError) {
+                    // If validation is successful, you can proceed with form submission
+                    // For demonstration, we'll just show an alert
+                    alert("Login successful!");
+                    // In a real application, you would send the data to a server here
+                    // loginForm.submit();
+                    window.location.href = "index.2.html";
+                }
+            });
+
+            function showError(inputId, message) {
+                const inputGroup = document.getElementById(inputId).parentElement;
+                const error = document.createElement("div");
+                error.className = "error-message";
+                error.innerText = message;
+                inputGroup.appendChild(error);
+                inputGroup.classList.add("error");
+            }
+
+            function clearErrors() {
+                const errorMessages = document.querySelectorAll(".error-message");
+                errorMessages.forEach((error) => error.remove());
+
+                const errorInputs = document.querySelectorAll(".input-group.error");
+                errorInputs.forEach((input) => input.classList.remove("error"));
+            }
+        });
+    </script>
+</body>
+
+</html>
