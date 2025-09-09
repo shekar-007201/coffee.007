@@ -1,11 +1,20 @@
 [build]
   publish = "/"
-  command = "#"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
+[[redirects]]
+  from = "/pages/*"
+  to = "/pages/:splat"
+  status = 200
+
 [build.processing]
   skip_processing = false
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
