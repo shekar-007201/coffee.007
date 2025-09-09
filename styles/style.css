@@ -1,10 +1,13 @@
 /* Common styles */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
+
 /* Header styles */
+
 .header {
     text-align: center;
     padding: 2rem;
@@ -12,7 +15,9 @@ body {
     margin-bottom: 2rem;
 }
 
+
 /* Card styles */
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -68,7 +73,9 @@ body {
     background-color: #0056b3;
 }
 
+
 /* Menu section styles */
+
 .menu-section {
     margin-bottom: 2rem;
 }
@@ -99,7 +106,9 @@ body {
     font-size: 0.9rem;
 }
 
+
 /* Animations */
+
 @keyframes glow {
     from {
         box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
